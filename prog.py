@@ -4,11 +4,11 @@ import colorsys
 from time import sleep, time as tm
 import sys
 
-# import blinkt
+import blinkt
 
 from datetime import time, datetime, timedelta
 
-# lever soleil
+# Sunrise calcul part
 import ephem
 
 # Coordonnées géographiques de votre emplacement
@@ -30,10 +30,6 @@ sunrise_time = sunrise_time + timedelta(hours=2)
 
 # Affichage de l'heure du lever du soleil
 print("Lever du soleil :", sunrise_time.time())
-
-
-
-
 
 try:
     hour1 = int(sys.argv[1])
@@ -61,10 +57,10 @@ heure_actuelle = datetime.now().time()
 spacing = 360.0 / 16.0
 hue = 0
 
-# blinkt.set_clear_on_exit()
+blinkt.set_clear_on_exit()
 
 brightness = 0.1
-# blinkt.set_brightness(brightness)
+blinkt.set_brightness(brightness)
 
 def nombre_total_secondes(temps1, temps2):
     secondes1 = temps1.hour * 3600 + temps1.minute * 60 + temps1.second
@@ -73,7 +69,6 @@ def nombre_total_secondes(temps1, temps2):
 
 
 while heure_actuelle >= heure_debut and heure_actuelle <= heure_fin:
-    '''
     hue = int(tm.time() * 100) % 360
     for x in range(blinkt.NUM_PIXELS):
         offset = x * spacing
@@ -82,7 +77,7 @@ while heure_actuelle >= heure_debut and heure_actuelle <= heure_fin:
         blinkt.set_pixel(x, r, g, b)
 
     blinkt.show()
-    '''
+    
     sleep(0.001)
     heure_actuelle = datetime.now().time()
 
@@ -92,4 +87,4 @@ while heure_actuelle >= heure_debut and heure_actuelle <= heure_fin:
     if brightness != 1.0:
         brightness = round(round(difference)/(0.75*nombre_total_secondes(heure_fin, heure_debut)),3)
         print(brightness)
-        # blinkt.set_brightness(brightness)
+        blinkt.set_brightness(brightness)
