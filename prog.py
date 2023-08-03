@@ -11,11 +11,11 @@ from datetime import time, datetime, timedelta
 # Sunrise calcul part
 import ephem
 
-# Coordonnées géographiques de votre emplacement
+# Coordonnees geographiques de votre emplacement
 latitude = '48.8566'  # Latitude de Paris
 longitude = '2.3522'  # Longitude de Paris
 
-# Création de l'objet observer avec les coordonnées géographiques
+# Creation de l'objet observer avec les coordonnees geographiques
 observer = ephem.Observer()
 observer.lat = latitude
 observer.lon = longitude
@@ -69,7 +69,7 @@ def nombre_total_secondes(temps1, temps2):
 
 
 while heure_actuelle >= heure_debut and heure_actuelle <= heure_fin:
-    hue = int(tm.time() * 100) % 360
+    hue = int(tm() * 100) % 360
     for x in range(blinkt.NUM_PIXELS):
         offset = x * spacing
         h = ((hue + offset) % 360) / 360.0
@@ -81,7 +81,7 @@ while heure_actuelle >= heure_debut and heure_actuelle <= heure_fin:
     sleep(0.001)
     heure_actuelle = datetime.now().time()
 
-    # Calcul de la différence de temps en secondes
+    # Calcul de la difference de temps en secondes
     difference = nombre_total_secondes(datetime.now(), heure_debut)
 
     if brightness != 1.0:
