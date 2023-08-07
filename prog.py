@@ -31,21 +31,28 @@ sunrise_time = sunrise_time + timedelta(hours=2)
 # Affichage de l'heure du lever du soleil
 print("Lever du soleil :", sunrise_time.time())
 
-try:
-    hour1 = int(sys.argv[1])
-    min1 = int(sys.argv[2])
-    hour2 = int(sys.argv[3])
-    min2 = int(sys.argv[4])
-except Exception as e:
-    print(e)
+hour = "6h45"
+
+def get_hour(hour):
+    hours = int(hour.split("h")[0])
+    min = int(hour.split("h")[1])
+    return hours, min
+
+if sys.argv[1] == "sun":
     hour1 = sunrise_time.hour
     min1 = sunrise_time.minute
-    if min1 >= 50:
-        hour2 = hour1 + 1
-        min2 = (min1 + 10)%60
-    else:
-        hour2 = hour1
-        min2 = min1 + 10
+    
+else:
+    hour1 = get_hour(hour)[0]
+    min1 = get_hour(hour)[1] 
+
+if min1 >= 50:
+    hour2 = hour1 + 1
+    min2 = (min1 + 15)%60
+else:
+    hour2 = hour1
+    min2 = min1 + 15
+
 
 heure_debut = time(hour1, min1, second=0, microsecond=0)
 heure_fin = time(hour2, min2, second=0, microsecond=0)
