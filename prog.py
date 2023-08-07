@@ -92,7 +92,6 @@ while heure_actuelle >= heure_debut and heure_actuelle <= heure_fin:
     # Calcul de la difference de temps en secondes
     difference = nombre_total_secondes(datetime.now(), heure_debut)
 
-    if brightness != 1.0:
+    if brightness <= 1.0:
         brightness = round(round(difference)/(0.75*nombre_total_secondes(heure_fin, heure_debut)),3)
-        print(brightness)
         blinkt.set_brightness(brightness)
