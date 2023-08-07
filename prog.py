@@ -38,7 +38,8 @@ def get_hour(hour):
     min = int(hour.split("h")[1])
     return hours, min
 
-if sys.argv[1] == "sun":
+
+if sys.argv[0] == 1 && sys.argv[1] == "sun":
     hour1 = sunrise_time.hour
     min1 = sunrise_time.minute
     
