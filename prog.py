@@ -31,7 +31,7 @@ sunrise_time = sunrise_time + timedelta(hours=2)
 # Affichage de l'heure du lever du soleil
 print("Lever du soleil :", sunrise_time.time())
 
-hour = "11h20"
+hour = "12h51"
 
 def get_hour(hour):
     hours = int(hour.split("h")[0])
